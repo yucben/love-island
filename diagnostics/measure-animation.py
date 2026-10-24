@@ -8,6 +8,7 @@ import atexit
 import json
 import os
 import statistics
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -28,11 +29,12 @@ args = parser.parse_args()
 if args.cycles < 1 or args.target_fps < 0:
     parser.error("cycles must be positive and target-fps must be nonnegative")
 original_environment = dict(os.environ)
-manager = Path.home() / ".local/bin/island-session"
+manager = Path(shutil.which("love-island-session") or (Path.home() / ".local/bin/island-session"))
+service_unit = "love-island.service" if manager.name == "love-island-session" else "dynamic-island.service"
 if args.exclusive:
     subprocess.run([str(manager), "restore"], check=True)
     atexit.register(lambda: subprocess.run([str(manager), "start"], env=original_environment, check=False))
-elif subprocess.run(["systemctl", "--user", "is-active", "--quiet", "dynamic-island.service"]).returncode == 0:
+elif subprocess.run(["systemctl", "--user", "is-active", "--quiet", service_unit]).returncode == 0:
     parser.error("Use --exclusive: overlapping layer-shell surfaces invalidate frame measurements.")
 temporary = tempfile.TemporaryDirectory(prefix="island-animation-")
 os.environ["XDG_CONFIG_HOME"] = temporary.name + "/config"
