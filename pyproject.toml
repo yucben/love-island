@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "love-island"
+version = "0.1.0"
+description = "An experimental island notification surface for KDE Plasma Wayland"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+# Use distribution packages for PySide6 and the matching KDE Qt plugins.
+dependencies = [
+    "PySide6>=6.7",
+    "dbus-python>=1.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/yucben/love-island"
+Issues = "https://github.com/yucben/love-island/issues"
+
+[project.scripts]
+love-island = "dynamicisland.app:main"
+dynamic-island = "dynamicisland.app:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dynamicisland = [
+    "qml/*.qml",
+    "qml/Platform/*.qml",
+    "qml/DynamicIsland/*.qml",
+    "qml/DynamicIsland/qmldir",
+]

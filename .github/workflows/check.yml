@@ -1,0 +1,21 @@
+name: check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - name: Install distribution Qt and Python dependencies
+        run: pacman -Syu --noconfirm --needed git pyside6 python-dbus dbus
+      - uses: actions/checkout@v4
+      - name: Syntax and package layout
+        run: |
+          python -m compileall -q src tests packaging diagnostics
+          bash -n tools/session.sh packaging/aur/PKGBUILD packaging/aur/love-island.install
+          bash tools/check-package.sh
+      - name: Isolated QML and application regression tests
+        env:
+          PYTHONPATH: src
+        run: dbus-run-session -- python -m unittest discover -s tests -v

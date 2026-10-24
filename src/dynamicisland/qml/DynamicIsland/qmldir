@@ -1,0 +1,15 @@
+module DynamicIsland
+
+singleton Theme 1.0 Theme.qml
+
+Island 1.0 Island.qml
+NotificationCard 1.0 NotificationCard.qml
+ActionButton 1.0 ActionButton.qml
+ReplyField 1.0 ReplyField.qml
+CloseButton 1.0 CloseButton.qml
+
+IslandPresentation 1.0 IslandPresentation.qml
+CompactMusic 1.0 CompactMusic.qml
+MusicPlayer 1.0 MusicPlayer.qml
+StatusCard 1.0 StatusCard.qml
+NotificationHistory 1.0 NotificationHistory.qml

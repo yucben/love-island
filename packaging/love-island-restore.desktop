@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Restore KDE Notifications
+Name[zh_CN]=恢复 KDE 默认通知
+Comment=Disable Love Island and restore KDE notifications
+Exec=love-island-session restore
+Icon=edit-undo
+Categories=Utility;
+Terminal=false

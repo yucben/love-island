@@ -1,0 +1,18 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  source-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create source release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git archive --format=tar --prefix="love-island-${GITHUB_REF_NAME#v}/" HEAD | gzip -n > "love-island-${GITHUB_REF_NAME#v}.tar.gz"
+          sha256sum "love-island-${GITHUB_REF_NAME#v}.tar.gz" > SHA256SUMS
+          gh release create "$GITHUB_REF_NAME" "love-island-${GITHUB_REF_NAME#v}.tar.gz" SHA256SUMS --prerelease --title "Love Island $GITHUB_REF_NAME (experimental)" --notes-file docs/RELEASE.md

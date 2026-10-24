@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Compiled translation catalogues are built by tools/build-translations.py
+*.mo
+
+# Local package and release artifacts
+*.pkg.tar.*
+artifacts/
+.aur-publish/

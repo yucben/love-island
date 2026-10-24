@@ -1,0 +1,25 @@
+pkgbase = love-island
+	pkgdesc = Experimental island notification surface for KDE Plasma Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yucben/love-island
+	install = love-island.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = python-dbus
+	depends = python-gobject
+	depends = layer-shell-qt
+	depends = plasma-workspace
+	depends = kwin
+	depends = libkscreen
+	depends = kconfig
+	depends = glib2
+	depends = util-linux
+	optdepends = libcanberra: notification sounds
+	source = love-island::git+https://github.com/yucben/love-island.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = love-island

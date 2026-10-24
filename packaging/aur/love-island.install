@@ -1,0 +1,12 @@
+post_install() {
+    /usr/lib/love-island/session-bridge install || true
+}
+
+post_upgrade() {
+    /usr/lib/love-island/session-bridge upgrade || true
+}
+
+pre_remove() {
+    # Restore while the controller and user service still exist.
+    /usr/lib/love-island/session-bridge remove || true
+}

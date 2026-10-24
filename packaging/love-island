@@ -1,0 +1,3 @@
+#!/bin/sh
+export PYTHONPATH=/usr/lib/love-island/src
+exec /usr/bin/python -m dynamicisland "$@"

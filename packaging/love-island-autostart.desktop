@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Love Island
+Exec=love-island-session autostart
+TryExec=love-island-session
+OnlyShowIn=KDE;
+NoDisplay=true

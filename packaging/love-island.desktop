@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Love Island
+Name[zh_CN]=Love Island 灵动岛
+Comment=Enable the island notification surface
+Exec=love-island-session start
+Icon=preferences-desktop-notification
+Categories=Utility;
+Terminal=false
